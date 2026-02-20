@@ -10,14 +10,12 @@
 ██║ ╚═╝ ██║╚██████╔╝██████╔╝╚██████╔╝███████╗██║   ██║   ██║  ██║
 ╚═╝     ╚═╝ ╚═════╝ ╚═════╝  ╚═════╝ ╚══════╝╚═╝   ╚═╝   ╚═╝  ╚═╝
 ```
-
-
-‎ ‎ 
-‎ 
+‎
+‎
 > [!NOTE]
 > Modulith is built around a clean `Feature` base class. Every feature inherits from it and is ready to implement immediately.
 
-‎ 
+‎
 ---
 
 ## About this Project
