@@ -1,7 +1,7 @@
-# ⚙️ Modulith
-
-A command-line Visual Studio C++ project generator. Scaffold complete `.sln`, `.vcxproj`, and modular feature files instantly from a single prompt.
-
+# ⚙️ **Modulith** 
+‎
+‎
+‎
 ```
 ███╗   ███╗ ██████╗ ██████╗ ██╗   ██╗██╗     ██╗████████╗██╗  ██╗
 ████╗ ████║██╔═══██╗██╔══██╗██║   ██║██║     ██║╚══██╔══╝██║  ██║
@@ -11,19 +11,22 @@ A command-line Visual Studio C++ project generator. Scaffold complete `.sln`, `.
 ╚═╝     ╚═╝ ╚═════╝ ╚═════╝  ╚═════╝ ╚══════╝╚═╝   ╚═╝   ╚═╝  ╚═╝
 ```
 
-> [!IMPORTANT]
-> Modulith targets **Visual Studio 2019** (toolset v142) and **x64** builds only. Generated projects are Windows-specific.
 
+‎ ‎ 
+‎ 
 > [!NOTE]
-> Modulith is built around a clean abstract `Feature` base class. Every generated feature inherits from it and is ready to implement immediately.
+> Modulith is built around a clean `Feature` base class. Every feature inherits from it and is ready to implement immediately.
 
+‎ 
 ---
 
 ## About this Project
 
+
 ### Overview
 
-Modulith removes the repetitive boilerplate of setting up a new modular C++ project in Visual Studio. Give it a project name, a namespace, and your feature names — it generates a complete, loadable solution in seconds with a consistent architecture across every project.
+Modulith removes the boring and wasted time used when setting up a new C++ project in Visual Studio. To do this it creates a project name, customizable namespace, and individual feature names, as well as a global Feature Managing system. This allows you to keep a consistent and clean architecture for every project.
+
 
 ### Architecture
 
@@ -32,24 +35,21 @@ All generated projects follow the same structure:
 ```
 YourProject/
 ├── main.cpp
-├── YourProject.sln
-├── YourProject.vcxproj
-├── YourProject.vcxproj.filters
 ├── Core/
 │   ├── FeatureManager.hpp
 │   └── FeatureManager.cpp
 └── Features/
-    ├── FeatureA/
-    │   ├── FeatureA.hpp
-    │   └── FeatureA.cpp
-    └── FeatureB/
-        ├── FeatureB.hpp
-        └── FeatureB.cpp
+    ├── Feature1/
+    │   ├── Feature1.hpp
+    │   └── Feature1.cpp
+    └── Feature2/
+        ├── Feature2.hpp
+        └── Feature2.cpp
 ```
 
 ### Feature Base Class
 
-Every feature implements the `Feature` abstract class defined in `Core/FeatureManager.hpp` and communicates through a shared lifecycle:
+Every feature implements the `Feature` class defined in `Core/FeatureManager.hpp` and communicates through a shared lifecycle:
 
 ```cpp
 namespace YourNamespace
@@ -72,11 +72,11 @@ namespace YourNamespace
 }
 ```
 
-`SetEnabled` drives the lifecycle automatically — calling `OnExecute` on enable and `OnDisabled` on disable. Each feature is fully self-contained in its own folder under `Features/`.
+`SetEnabled` drives the lifecycle automatically calling `OnExecute` on enable and `OnDisabled` on disable. Each feature is fully self-contained in its own folder under `Features/`.
 
 ### Generated Feature Stub
 
-Each feature is scaffolded as a pair of files ready to implement:
+Example:
 
 ```cpp
 // ESP.hpp
@@ -100,15 +100,16 @@ namespace MH
 
 ### Build Modulith
 
+
+Compile by using the built in visual studio compiler
+
+**or** 
+
 Compile with any C++17-capable MSVC toolchain
 
 ```
 cl /std:c++17 /EHsc ProjectGenerator.cpp /Fe:modulith.exe
 ```
-
-**or** 
-
-Compile by using the built in visual studio compiler
 
 
 ### Create a Project
@@ -144,6 +145,4 @@ Note: Add the new files to your .vcxproj manually, or re-run option 1 to regener
 
 ---
 
-## About
 
-⚙️ **Modulith** is a C++ project creator designed to simplify cheat development
